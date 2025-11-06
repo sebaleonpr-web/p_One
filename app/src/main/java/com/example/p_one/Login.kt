@@ -69,12 +69,13 @@ class Login : AppCompatActivity() {
                 mostrarAlerta("Error", "La contraseña debe tener al menos 6 caracteres"); return
             }
         }
+
         btnLogin.isEnabled = false
 
         auth.signInWithEmailAndPassword(correo, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    mostrarAlerta("Inicio exitoso", "Usuario correcto. Redirigiendo…")
+                    mostrarAlerta("Inicio exitoso", "Usuario correcto.")
                     Handler(Looper.getMainLooper()).postDelayed({
                         startActivity(Intent(this, Crud::class.java))
                         finish()
@@ -181,14 +182,16 @@ class Login : AppCompatActivity() {
             }
     }
 
-
-
-
     private fun mostrarAlerta(titulo: String, mensaje: String) {
-        AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this)
             .setTitle(titulo)
             .setMessage(mensaje)
-            .setPositiveButton("Aceptar", null)
-            .show()
+
+        if (titulo != "Inicio exitoso") {
+            builder.setPositiveButton("Aceptar", null)
+        }
+
+        builder.show()
     }
+
 }
