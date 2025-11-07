@@ -22,10 +22,6 @@
             android:exported="false"
             android:screenOrientation="locked" />
         <activity
-            android:name=".Crud_2"
-            android:exported="false"
-            android:screenOrientation="locked" />
-        <activity
             android:name=".Crud"
             android:exported="false"
             android:screenOrientation="locked" />
