@@ -1,5 +1,4 @@
 package com.example.p_one
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -18,7 +17,6 @@ class ScreenApodo : AppCompatActivity() {
 
     private lateinit var etApodo: EditText
     private lateinit var btnComenzarQuiz: Button
-
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 

@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -26,6 +26,16 @@ class Ranking : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
 
     private var apodoAlumno: String = "Invitado"
+
+    // ------- ALERTA -------
+    private fun mostrarAlerta(titulo: String, mensaje: String) {
+        val b = AlertDialog.Builder(this)
+        b.setTitle(titulo)
+        b.setMessage(mensaje)
+        b.setPositiveButton("Aceptar", null)
+        b.create().show()
+    }
+    // ------------------------
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +55,6 @@ class Ranking : AppCompatActivity() {
         btnVolverJugar = findViewById(R.id.btnVolverJugar)
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
 
-        // Apodo que viene desde Results
         apodoAlumno = intent.getStringExtra("apodoAlumno") ?: "Invitado"
 
         btnVolverJugar.setOnClickListener {
@@ -72,10 +81,9 @@ class Ranking : AppCompatActivity() {
             .get()
             .addOnSuccessListener { snap ->
                 if (snap.isEmpty) {
-                    Toast.makeText(this, "Sin resultados aún", Toast.LENGTH_SHORT).show()
+                    mostrarAlerta("Aviso", "Sin resultados aún")
                 } else {
 
-                    // Lista de filas, cada fila es un map con los textos de tus TextView
                     val filas: List<Map<String, String>> = snap.documents.mapIndexed { index, doc ->
                         val apodo = doc.getString("apodo") ?: "Sin apodo"
                         val porcentajeDouble = doc.getDouble("porcentaje") ?: 0.0
@@ -92,7 +100,6 @@ class Ranking : AppCompatActivity() {
                         )
                     }
 
-                    // Adapter que usa item_ranking.xml
                     val adapter = object : ArrayAdapter<Map<String, String>>(
                         this,
                         R.layout.item_ranking,
@@ -120,11 +127,7 @@ class Ranking : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(
-                    this,
-                    "Error al cargar ranking: ${e.message}",
-                    Toast.LENGTH_LONG
-                ).show()
+                mostrarAlerta("Error", "Error al cargar ranking: ${e.message}")
             }
     }
 }

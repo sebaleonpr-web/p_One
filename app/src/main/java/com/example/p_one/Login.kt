@@ -1,4 +1,5 @@
 package com.example.p_one
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -20,6 +21,12 @@ import com.example.p_one.crudAdmin.crudAlumno
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.Timestamp
+
+// importa las screens que usas en el when
+import com.example.p_one.bienvenidaScreenProfe
+import com.example.p_one.menuAdmin
+import com.example.p_one.ScreenApodo
+import com.example.p_one.crud_registro
 
 class Login : AppCompatActivity() {
 
@@ -50,7 +57,7 @@ class Login : AppCompatActivity() {
         txtcontrasena = findViewById(R.id.txt_contrasena)
         btnLogin = findViewById(R.id.btn_login)
         tvOlvidaste = findViewById(R.id.tv_olvidaste)
-        tvRegistrar= findViewById(R.id.tv_registrate)
+        tvRegistrar = findViewById(R.id.tv_registrate)
 
         btnLogin.setOnClickListener {
             validador()
@@ -121,9 +128,17 @@ class Login : AppCompatActivity() {
 
                                 Handler(Looper.getMainLooper()).postDelayed({
                                     when {
-                                        esAdmin -> startActivity(Intent(this, menuAdmin::class.java))
-                                        esProfe -> startActivity(Intent(this, menuProfesor::class.java))
-                                        else -> startActivity(Intent(this, ScreenApodo::class.java))
+                                        esAdmin -> {
+                                            startActivity(Intent(this, menuAdmin::class.java))
+                                        }
+                                        esProfe -> {
+                                            val intentProfe = Intent(this, bienvenidaScreenProfe::class.java)
+                                            intentProfe.putExtra("nombre", displayName)
+                                            startActivity(intentProfe)
+                                        }
+                                        else -> {
+                                            startActivity(Intent(this, ScreenApodo::class.java))
+                                        }
                                     }
                                     finish()
                                 }, 1200)
@@ -241,9 +256,9 @@ class Login : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 if (!id.isEmpty) {
-                                    val id = id.documents.first().id
+                                    val idDoc = id.documents.first().id
                                     firebase.collection("users")
-                                        .document(id)
+                                        .document(idDoc)
                                         .update("lastRecovery", Timestamp.now())
                                 }
                                 mostrarAlerta("Exito", "Se te ha enviado un correo para recuperar tu contraseña.")
@@ -280,9 +295,9 @@ class Login : AppCompatActivity() {
 
         builder.show()
     }
-    private fun limpiar(){
+
+    private fun limpiar() {
         txtcontrasena.text.clear()
         txtcorreo.text.clear()
     }
-
 }

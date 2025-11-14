@@ -15,6 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.P_One">
         <activity
+            android:name=".listCursosProfe"
+            android:exported="false" />
+        <activity
+            android:name=".listAlumnos"
+            android:exported="false" />
+        <activity
+            android:name=".listPuntuacionProfe"
+            android:exported="false" />
+
+        <activity
+            android:name=".bienvenidaScreenProfe"
+            android:exported="false" />
+        <activity
             android:name=".bienvenidaScreen"
             android:exported="false" />
         <activity
@@ -32,9 +45,7 @@
         <activity
             android:name=".crudAdmin.crudEditRol"
             android:exported="false" />
-        <activity
-            android:name=".crudAdmin.crudmodificarRol"
-            android:exported="false" />
+
         <activity
             android:name=".crudAdmin.crudCursos"
             android:exported="false" />
@@ -50,9 +61,7 @@
         <activity
             android:name=".menuProfesor"
             android:exported="false" />
-        <activity
-            android:name=".menuAlumno"
-            android:exported="false" />
+
         <activity
             android:name=".menuAdmin"
             android:exported="false" />

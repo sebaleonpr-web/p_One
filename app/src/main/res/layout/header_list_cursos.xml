@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="6dp"
+    android:background="#FFF3E0">
+
+    <TextView
+        android:id="@+id/hCod"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:text="C"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="#333333" />
+
+    <TextView
+        android:id="@+id/hCurso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.30"
+        android:text="CURSO"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="#333333" />
+
+    <TextView
+        android:id="@+id/hLetra"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:text="LETRA"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="#333333" />
+
+    <TextView
+        android:id="@+id/hProfesor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.35"
+        android:text="PROFESOR"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="#333333" />
+
+</LinearLayout>

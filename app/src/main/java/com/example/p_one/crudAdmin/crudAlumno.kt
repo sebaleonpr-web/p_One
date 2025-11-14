@@ -44,7 +44,8 @@ class crudAlumno : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_crud_alumno)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.login)) { v, insets ->
+        // 🔧 Aquí estaba el problema: el id correcto en tu layout es "main", no "login"
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -98,7 +99,6 @@ class crudAlumno : AppCompatActivity() {
 
         if (documentoId == null) {
 
-            // Revisar apodo único en colección users
             firebase.collection("users")
                 .whereEqualTo("apodoAlumno", apodo)
                 .limit(1)
@@ -108,7 +108,7 @@ class crudAlumno : AppCompatActivity() {
                         mostrarAlerta("Error", "Ya existe un alumno con ese apodo.")
                         txt_apodo.text.clear()
                     } else {
-                        // ===== Correlativo numAlumno (transacción) =====
+
                         firebase.runTransaction { tx ->
                             val ref = firebase.collection("contadores").document("alumnos")
                             val snapCont = tx.get(ref)
@@ -118,7 +118,7 @@ class crudAlumno : AppCompatActivity() {
                             nuevo
                         }
                             .addOnSuccessListener { numAlumno ->
-                                // ===== Crear usuario en Auth (correo único) =====
+
                                 auth.createUserWithEmailAndPassword(correo, contrasena)
                                     .addOnSuccessListener { result ->
                                         val uid = result.user?.uid ?: ""
@@ -234,7 +234,7 @@ class crudAlumno : AppCompatActivity() {
                         idCurso = idCurso,
                         nombreCurso = nombreCurso,
                         nivel = nivel,
-                        profesorId = null   // el profe se asigna en otra lógica
+                        profesorId = null
                     )
 
                     val label = when {

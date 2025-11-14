@@ -6,93 +6,89 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundventanas"
-    tools:context=".menuProfesor">
+    tools:context=".listPuntuacionProfe"
+    android:background="@drawable/backgroundventanas">
 
     <LinearLayout
-        android:id="@+id/main_container_menu_profe"
-        android:layout_width="379dp"
+        android:id="@+id/main_container"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:padding="24dp"
+        android:gravity="center"
         android:background="#CCFFFFFF"
         android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp">
 
         <!-- TÍTULO -->
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTituloMenuProfe"
+            android:id="@+id/tvTituloPuntuaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menú Profesor"
+            android:text="Puntuaciones"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="#000000"
             android:gravity="center"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="4dp" />
 
         <!-- SUBTÍTULO -->
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvSubtituloMenuProfe"
+            android:id="@+id/tvSubPuntuaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seleccione una opción para gestionar la información."
+            android:text="Resultados de los estudiantes"
             android:textSize="14sp"
             android:textColor="#555555"
             android:gravity="center"
-            android:layout_marginBottom="18dp" />
+            android:layout_marginBottom="12dp" />
 
         <!-- DIVISOR -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#FFE0B2"
-            android:layout_marginBottom="22dp" />
+            android:layout_marginBottom="10dp" />
 
-        <!-- BOTÓN VER PUNTUACIONES -->
+        <!-- LISTVIEW -->
+        <ListView
+            android:id="@+id/lvPuntuaciones"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="#FFE0B2"
+            android:dividerHeight="1dp"
+            android:padding="6dp"
+            android:background="#FFFDF7" />
+
+        <!-- BOTÓN VOLVER -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVerPuntuaciones"
+            android:id="@+id/btnVolver"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:onClick="curdPuntuacion"
-            android:text="Ver puntuaciones"
+            android:text="Volver"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             app:backgroundTint="#FFA726"
-            app:cornerRadius="12dp" />
+            app:cornerRadius="12dp"
+            android:layout_marginTop="12dp" />
 
-        <!-- BOTÓN VER LISTA ALUMNOS -->
+        <!-- BOTÓN CERRAR SESIÓN -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVerListaAlumnos"
+            android:id="@+id/btnCerrarSesion"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:onClick="curdalum"
-            android:text="Ver lista alumnos"
+            android:text="Cerrar sesión"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            app:backgroundTint="#FFA726"
-            app:cornerRadius="12dp" />
-
-        <!-- BOTÓN VER LISTA CURSOS -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVerListaCursos"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:fontFamily="sans-serif-medium"
-            android:onClick="curdCurso"
-            android:text="Ver lista cursos"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:backgroundTint="#FFA726"
-            app:cornerRadius="12dp" />
+            app:backgroundTint="#E65100"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="8dp" />
 
     </LinearLayout>
 

@@ -2,6 +2,8 @@ package com.example.p_one.crudAdmin
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +21,13 @@ class crudCursos : AppCompatActivity() {
     private lateinit var txtNombreCurso: TextInputEditText
     private lateinit var txtNivelCurso: TextInputEditText
 
-    private var documentoId: String? = null   // por si luego quieres modo edición
+    private lateinit var spProfes: Spinner
+
+    private val listaProfes = mutableListOf<String>()
+    private val listaProfesIds = mutableListOf<String>()
+    private lateinit var adaptadorProfes: ArrayAdapter<String>
+
+    private var documentoId: String? = null   // modo edición
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +44,36 @@ class crudCursos : AppCompatActivity() {
 
         txtNombreCurso = findViewById(R.id.txt_nombre_curso)
         txtNivelCurso = findViewById(R.id.txt_nivel_curso)
+        spProfes = findViewById(R.id.spinner_profe)
+
+        adaptadorProfes = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaProfes)
+        adaptadorProfes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spProfes.adapter = adaptadorProfes
+
+        cargarProfes()
+    }
+
+    private fun cargarProfes() {
+        firebase.collection("users")
+            .whereEqualTo("rol", "Profesor")
+            .get()
+            .addOnSuccessListener { snap ->
+
+                listaProfes.clear()
+                listaProfesIds.clear()
+
+                for (doc in snap) {
+                    val nombre = doc.getString("nombre") ?: ""
+                    val apellido = doc.getString("apellido") ?: ""
+                    val id = doc.id
+
+                    listaProfes.add("$nombre $apellido")
+                    listaProfesIds.add(id)
+                }
+
+                adaptadorProfes.notifyDataSetChanged()
+                if (listaProfes.isNotEmpty()) spProfes.setSelection(0)
+            }
     }
 
     fun crearCurso(view: View) {
@@ -47,10 +85,13 @@ class crudCursos : AppCompatActivity() {
             return
         }
 
-        if (documentoId != null) {
-            mostrarAlerta("Aviso", "Estás en modo edición. Usa Editar curso.")
+        if (listaProfesIds.isEmpty()) {
+            mostrarAlerta("Error", "No hay profesores registrados.")
             return
         }
+
+        val pos = spProfes.selectedItemPosition
+        val profesorId = listaProfesIds[pos]
 
         val cursosRef = firebase.collection("Cursos")
         val nuevoDoc = cursosRef.document()
@@ -60,12 +101,12 @@ class crudCursos : AppCompatActivity() {
             idCurso = idGenerado,
             nombreCurso = nombre,
             nivel = nivel,
-            profesorId = null        // se llenará después según lo que elija el profe
+            profesorId = profesorId
         )
 
         nuevoDoc.set(curso)
             .addOnSuccessListener {
-                mostrarAlerta("Éxito", "Curso '$nombre' creado correctamente.")
+                mostrarAlerta("Éxito", "Curso '$nombre' creado con profesor asignado.")
                 limpiarFormCurso()
             }
             .addOnFailureListener { e ->
@@ -76,6 +117,7 @@ class crudCursos : AppCompatActivity() {
     private fun limpiarFormCurso() {
         txtNombreCurso.setText("")
         txtNivelCurso.setText("")
+        if (listaProfes.isNotEmpty()) spProfes.setSelection(0)
         txtNombreCurso.requestFocus()
     }
 

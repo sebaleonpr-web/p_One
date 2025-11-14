@@ -5,8 +5,8 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -58,6 +58,16 @@ class mathQuiz : AppCompatActivity() {
     private var apodoAlumno: String = "Invitado"
     private var uidAuth: String? = null
 
+    // ---------- ALERTA ----------
+    private fun mostrarAlerta(titulo: String, mensaje: String) {
+        val b = AlertDialog.Builder(this)
+        b.setTitle(titulo)
+        b.setMessage(mensaje)
+        b.setPositiveButton("Aceptar", null)
+        b.create().show()
+    }
+    // ------------------------------
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -91,7 +101,6 @@ class mathQuiz : AppCompatActivity() {
         actualizarProgreso()
         actualizarResumenParcial()
 
-        // Listeners con comportamiento visual
         btnOpcion1.setOnClickListener {
             if (!respondido) {
                 marcarOpcionSeleccionada(btnOpcion1)
@@ -122,7 +131,7 @@ class mathQuiz : AppCompatActivity() {
 
         btnSiguiente.setOnClickListener {
             if (!respondido) {
-                Toast.makeText(this, "Primero responde la pregunta", Toast.LENGTH_SHORT).show()
+                mostrarAlerta("Aviso", "Primero responde la pregunta")
             } else {
                 if (numeroPregunta >= totalPreguntas) {
                     guardarResultadoEnFirestore()
@@ -155,7 +164,7 @@ class mathQuiz : AppCompatActivity() {
 
             OperationType.SUMA -> {
                 simboloOperacion = "+"
-                num1 = random.nextInt(1, 10)  // 1–9
+                num1 = random.nextInt(1, 10)
                 num2 = random.nextInt(1, 10)
                 respuestaCorrecta = num1 + num2
             }
@@ -178,9 +187,8 @@ class mathQuiz : AppCompatActivity() {
 
             OperationType.DIVISION -> {
                 simboloOperacion = "÷"
-
-                val resultado = random.nextInt(1, 10) // ya no parte de 0
-                val divisor = random.nextInt(1, 10)   // tampoco 0
+                val resultado = random.nextInt(1, 10)
+                val divisor = random.nextInt(1, 10)
 
                 num1 = resultado * divisor
                 num2 = divisor
@@ -188,13 +196,11 @@ class mathQuiz : AppCompatActivity() {
             }
         }
 
-
         tvOperacion.text = "$num1 $simboloOperacion $num2"
         actualizarProgreso()
 
         val opcionesSet = mutableSetOf<Int>()
         opcionesSet.add(respuestaCorrecta)
-
 
         while (opcionesSet.size < 4) {
             opcionesSet.add(random.nextInt(1, 20))
@@ -205,7 +211,6 @@ class mathQuiz : AppCompatActivity() {
         btnOpcion2.text = opcionesList[1].toString()
         btnOpcion3.text = opcionesList[2].toString()
         btnOpcion4.text = opcionesList[3].toString()
-
     }
 
     private fun verificarRespuesta(textoBoton: String) {
@@ -227,8 +232,6 @@ class mathQuiz : AppCompatActivity() {
         actualizarResumenParcial()
     }
 
-    // ---------- DISEÑO VISUAL DE BOTONES ----------
-
     private fun resetVisualOpciones() {
         val blanco = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
         val naranjaTexto = Color.parseColor("#FFA726")
@@ -240,21 +243,18 @@ class mathQuiz : AppCompatActivity() {
     }
 
     private fun marcarOpcionSeleccionada(btn: MaterialButton) {
-        val naranjaSeleccion = ColorStateList.valueOf(Color.parseColor("#FFCC80"))   // opción seleccionada clarita
-        val naranjaSuaveSiguiente = ColorStateList.valueOf(Color.parseColor("#FFB74D")) // siguiente elegante
+        val naranjaSeleccion = ColorStateList.valueOf(Color.parseColor("#FFCC80"))
+        val naranjaSuaveSiguiente = ColorStateList.valueOf(Color.parseColor("#FFB74D"))
 
         resetVisualOpciones()
 
-        // Opción marcada
         btn.backgroundTintList = naranjaSeleccion
         btn.setTextColor(Color.WHITE)
 
-        // Botón Siguiente activado con color suave
         btnSiguiente.isEnabled = true
         btnSiguiente.backgroundTintList = naranjaSuaveSiguiente
         btnSiguiente.setTextColor(Color.WHITE)
     }
-
 
     private fun prepararNuevaPreguntaVisual() {
         resetVisualOpciones()
@@ -263,8 +263,6 @@ class mathQuiz : AppCompatActivity() {
         btnSiguiente.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#BDBDBD"))
         btnSiguiente.setTextColor(Color.WHITE)
     }
-
-    // ---------- FIRESTORE ----------
 
     private fun guardarResultadoEnFirestore() {
         val porcentaje = (correctas * 100.0) / totalPreguntas.toDouble()
@@ -293,7 +291,7 @@ class mathQuiz : AppCompatActivity() {
                 finish()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error al guardar resultados: ${e.message}", Toast.LENGTH_LONG).show()
+                mostrarAlerta("Error", "Error al guardar resultados: ${e.message}")
             }
     }
 }
