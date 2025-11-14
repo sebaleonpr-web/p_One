@@ -142,8 +142,8 @@
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"
                             android:fontFamily="sans-serif-medium"
-                            app:backgroundTint="#FFA726"
-                            app:rippleColor="#CC7A00"
+                            app:backgroundTint="@color/mathquiz_button_bg"
+                            app:rippleColor="#00FFFFFF"
                             app:cornerRadius="12dp" />
 
                         <Space
@@ -159,8 +159,8 @@
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"
                             android:fontFamily="sans-serif-medium"
-                            app:backgroundTint="#FFA726"
-                            app:rippleColor="#CC7A00"
+                            app:backgroundTint="@color/mathquiz_button_bg"
+                            app:rippleColor="#00FFFFFF"
                             app:cornerRadius="12dp" />
                     </LinearLayout>
 
@@ -180,8 +180,8 @@
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"
                             android:fontFamily="sans-serif-medium"
-                            app:backgroundTint="#FFA726"
-                            app:rippleColor="#CC7A00"
+                            app:backgroundTint="@color/mathquiz_button_bg"
+                            app:rippleColor="#00FFFFFF"
                             app:cornerRadius="12dp" />
 
                         <Space
@@ -197,8 +197,8 @@
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"
                             android:fontFamily="sans-serif-medium"
-                            app:backgroundTint="#FFA726"
-                            app:rippleColor="#CC7A00"
+                            app:backgroundTint="@color/mathquiz_button_bg"
+                            app:rippleColor="#00FFFFFF"
                             app:cornerRadius="12dp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -235,8 +235,9 @@
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-medium"
-                    app:backgroundTint="#FFA726"
-                    app:rippleColor="#CC7A00"
+                    android:enabled="false"
+                    app:backgroundTint="#BDBDBD"
+                    app:rippleColor="#00FFFFFF"
                     app:cornerRadius="12dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginBottom="8dp" />

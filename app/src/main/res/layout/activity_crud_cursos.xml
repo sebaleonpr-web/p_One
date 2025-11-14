@@ -112,20 +112,32 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="10dp" />
 
-        <!-- Botones -->
+        <!-- BOTONES ORDENADOS -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCrearCurso"
+                android:id="@+id/btnVolverCurso"
                 android:layout_width="130dp"
                 android:layout_height="53dp"
                 android:layout_marginEnd="10dp"
+                android:text="Volver"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                app:backgroundTint="#FFA726"
+                app:rippleColor="#CC7A00"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCrearCurso"
+                android:layout_width="130dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="10dp"
                 android:text="Crear curso"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -134,20 +146,21 @@
                 app:backgroundTint="#FFA726"
                 app:rippleColor="#CC7A00"
                 app:cornerRadius="12dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnVerListaCursos"
-                android:layout_width="130dp"
-                android:layout_height="53dp"
-                android:layout_marginStart="10dp"
-                android:text="Ver cursos"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-                app:backgroundTint="#FFA726"
-                app:rippleColor="#CC7A00"
-                app:cornerRadius="12dp" />
         </LinearLayout>
+
+        <!-- VER CURSOS ABAJO -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerListaCursos"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:text="Ver cursos"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            app:backgroundTint="#29B6F6"
+            app:rippleColor="#0277BD"
+            app:cornerRadius="12dp" />
 
     </LinearLayout>
 

@@ -198,6 +198,19 @@
                 app:rippleColor="#CC7A00" />
         </LinearLayout>
 
+        <!-- *** BOTÓN NUEVO: VER LISTA *** -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerListaUsuarios"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:text="Ver lista"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:backgroundTint="#29B6F6"
+            app:rippleColor="#0277BD"
+            app:cornerRadius="12dp" />
+
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="wrap_content"

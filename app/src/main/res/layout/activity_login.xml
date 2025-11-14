@@ -8,105 +8,17 @@
     tools:context=".Login"
     android:background="@drawable/backgroundmain">
 
-    <LinearLayout
-        android:id="@+id/main_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:orientation="vertical"
-        android:paddingStart="50dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="50dp"
-        android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView3">
+    <!-- LOGO -->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="outline"
-            app:boxBackgroundColor="#FFFFFF"
-            app:boxStrokeColor="#000000"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:hintTextColor="#000000">
+    <!-- CONTENEDOR PRINCIPAL (CARD) -->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_correo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Correo"
-                android:inputType="textEmailAddress"
-                android:padding="12dp"
-                android:textColor="#000000"
-                android:textColorHint="#808080"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="password_toggle"
-            app:boxBackgroundColor="#FFFFFF"
-            app:boxStrokeColor="#000000"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:hintTextColor="#000000">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_contrasena"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                android:padding="12dp"
-                android:textColor="#000000"
-                android:textColorHint="#808080"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
-            android:layout_width="110dp"
-            android:layout_height="53dp"
-            android:text="Ingresar"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium"
-            app:backgroundTint="#FFA726"
-            app:rippleColor="#CC7A00"
-            app:cornerRadius="12dp"
-            app:layout_constraintTop_toBottomOf="@id/main_container"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"/>
-
-
-
-    </LinearLayout>
+    <!-- OLVIDASTE CONTRASEÑA -->
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
         android:layout_height="260dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="36dp"
         android:scaleType="fitCenter"
         android:src="@drawable/numerix_ico"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +26,146 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/main_container"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView3">
+
+        <!-- TARJETA LOGIN -->
+        <LinearLayout
+            android:id="@+id/cardLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_mathquiz_block"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <!-- TÍTULO LOGIN -->
+            <TextView
+                android:id="@+id/tvTituloLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="Iniciar sesión"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- SUBTÍTULO -->
+            <TextView
+                android:id="@+id/tvSubtituloLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="Ingresa tus datos para continuar"
+                android:textColor="#555555"
+                android:textSize="14sp" />
+
+            <!-- CORREO -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#FFFFFFFF"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="#FFA726"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="#99000000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#808080" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12dp" />
+
+            <!-- CONTRASEÑA -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#FFFFFFFF"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="#FFA726"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconMode="password_toggle"
+                app:hintTextColor="#99000000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_contrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#808080" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <!-- BOTÓN INGRESAR -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Ingresar"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:backgroundTint="@color/mathquiz_button_bg"
+                app:cornerRadius="18dp"
+                app:rippleColor="#00FFFFFF" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_olvidaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingTop="8dp"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/main_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- REGÍSTRATE -->
     <TextView
         android:id="@+id/tv_registrate"
         android:layout_width="wrap_content"
@@ -122,28 +174,12 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_horizontal|center_vertical"
-        android:paddingTop="8dp"
-        android:text="Registrate"
+        android:paddingTop="4dp"
+        android:text="Regístrate"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintTop_toBottomOf="@id/tv_olvidaste"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_olvidaste" />
-
-    <TextView
-        android:id="@+id/tv_olvidaste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingTop="12dp"
-        android:text="¿Olvidaste tu contraseña?"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_container" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

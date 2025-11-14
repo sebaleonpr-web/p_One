@@ -96,7 +96,7 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- CREADO POR (LABEL + NOMBRE AUTO) -->
+        <!-- CREADO POR -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvCreadorLabel"
             android:layout_width="match_parent"
@@ -115,7 +115,7 @@
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
 
-        <!-- PERMISO (MENÚ ÚNICO) -->
+        <!-- PERMISO -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPermisoMenu"
             android:layout_width="wrap_content"
@@ -148,7 +148,6 @@
                 android:text="Volver"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
                 app:backgroundTint="#FFA726"
                 app:rippleColor="#CC7A00"
                 app:cornerRadius="12dp" />
@@ -161,12 +160,24 @@
                 android:text="Guardar rol"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
                 app:backgroundTint="#FFA726"
                 app:rippleColor="#CC7A00"
                 app:cornerRadius="12dp"
                 android:onClick="crearRol"/>
         </LinearLayout>
+
+        <!-- *** BOTÓN NUEVO: VER LISTA *** -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerListaRoles"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:text="Ver lista"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:backgroundTint="#29B6F6"
+            app:rippleColor="#0277BD"
+            app:cornerRadius="12dp" />
 
         <ProgressBar
             android:id="@+id/progressRol"

@@ -68,7 +68,7 @@
             android:spinnerMode="dropdown"
             android:layout_marginTop="6dp" />
 
-        <!-- DATOS DEL USUARIO (SOLO LECTURA) -->
+        <!-- DATOS DEL USUARIO -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDatosUsuarioTitulo"
             android:layout_width="match_parent"
@@ -102,7 +102,7 @@
             android:layout_marginTop="2dp"
             android:textColor="#000000" />
 
-        <!-- NUEVO ROL / MENÚ -->
+        <!-- NUEVO ROL -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvNuevoRolTitulo"
             android:layout_width="match_parent"
@@ -128,7 +128,7 @@
             android:spinnerMode="dropdown"
             android:layout_marginTop="6dp" />
 
-        <!-- BOTONES -->
+        <!-- BOTONES ORDENADOS -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,11 +158,25 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-medium"
+                android:onClick="aplicarRolUsuarioOnClick"
                 app:backgroundTint="#FFA726"
                 app:rippleColor="#CC7A00"
-                app:cornerRadius="12dp"
-                android:onClick="aplicarRolUsuarioOnClick" />
+                app:cornerRadius="12dp" />
         </LinearLayout>
+
+        <!-- VER LISTA ABAJO -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerListaPersonasRoles"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:text="Ver lista roles"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            app:backgroundTint="#29B6F6"
+            app:rippleColor="#0277BD"
+            app:cornerRadius="12dp" />
 
         <ProgressBar
             android:id="@+id/progressEditRol"

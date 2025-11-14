@@ -56,8 +56,8 @@
         <!-- Nombre -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
             app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="12dp"
@@ -72,7 +72,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_nombre_admin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Nombre"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -80,8 +80,8 @@
         <!-- Apellido -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
             app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="12dp"
@@ -96,7 +96,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_apellido_admin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Apellido"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -104,8 +104,8 @@
         <!-- Correo -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
             app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="12dp"
@@ -120,7 +120,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_correo_admin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Correo"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +128,7 @@
         <!-- Contraseña -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginBottom="8dp"
             app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
@@ -145,7 +145,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_contrasena_admin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Contraseña"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -161,7 +161,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="10dp" />
 
-        <!-- Botones -->
+        <!-- Botones (Volver / Crear admin) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,10 +171,23 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCrearAdmin"
+                android:id="@+id/btnVolverAdmin"
                 android:layout_width="130dp"
                 android:layout_height="53dp"
                 android:layout_marginEnd="10dp"
+                android:text="Volver"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                app:backgroundTint="#FFA726"
+                app:rippleColor="#CC7A00"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCrearAdmin"
+                android:layout_width="130dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="10dp"
                 android:text="Crear admin"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -183,20 +196,21 @@
                 app:backgroundTint="#FFA726"
                 app:rippleColor="#CC7A00"
                 app:cornerRadius="12dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnVerListaAdmins"
-                android:layout_width="130dp"
-                android:layout_height="53dp"
-                android:layout_marginStart="10dp"
-                android:text="Ver lista admins"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-                app:backgroundTint="#FFA726"
-                app:rippleColor="#CC7A00"
-                app:cornerRadius="12dp" />
         </LinearLayout>
+
+        <!-- Ver lista admins abajo -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerListaAdmins"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:text="Ver lista admins"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            app:backgroundTint="#29B6F6"
+            app:rippleColor="#0277BD"
+            app:cornerRadius="12dp" />
 
     </LinearLayout>
 

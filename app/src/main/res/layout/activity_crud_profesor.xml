@@ -194,20 +194,32 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="10dp" />
 
-        <!-- Botones -->
+        <!-- BOTONES (nuevo orden) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCrearProfesor"
+                android:id="@+id/btnVolverCrudProfesor"
                 android:layout_width="130dp"
                 android:layout_height="53dp"
                 android:layout_marginEnd="10dp"
+                android:text="Volver"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                app:backgroundTint="#FFA726"
+                app:rippleColor="#CC7A00"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCrearProfesor"
+                android:layout_width="130dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="10dp"
                 android:text="Crear profesor"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -216,20 +228,21 @@
                 app:backgroundTint="#FFA726"
                 app:rippleColor="#CC7A00"
                 app:cornerRadius="12dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnVerListaProfes"
-                android:layout_width="130dp"
-                android:layout_height="53dp"
-                android:layout_marginStart="10dp"
-                android:text="Ver lista profesores"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-                app:backgroundTint="#FFA726"
-                app:rippleColor="#CC7A00"
-                app:cornerRadius="12dp" />
         </LinearLayout>
+
+        <!-- VER LISTA ABAJO -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerListaProfes"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:text="Ver lista profesores"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            app:backgroundTint="#29B6F6"
+            app:rippleColor="#0277BD"
+            app:cornerRadius="12dp" />
 
     </LinearLayout>
 
