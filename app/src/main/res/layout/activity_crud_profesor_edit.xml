@@ -6,7 +6,7 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".crudAdmin.crudProfesor"
+    tools:context=".EditCrud.crudProfesorEdit"
     android:background="@drawable/backgroundventanas">
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:id="@+id/tvTituloCrudProfesor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrar profesor"
+            android:text="Editar profesor"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -40,7 +40,7 @@
             android:id="@+id/tvSubtituloCrudProfesor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Asigna cursos y credenciales para que el profesor use P-One y el MathQuiz."
+            android:text="Modifica los datos del profesor seleccionado."
             android:textSize="14sp"
             android:textColor="#555555"
             android:gravity="center"
@@ -113,7 +113,7 @@
             android:layout_marginBottom="4dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSeleccionarCursosProf"
+            android:id="@+id/btnSeleccionarCursosProfEdit"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="Seleccionar cursos"
@@ -148,53 +148,22 @@
             app:boxStrokeColor="#000000"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
-            app:hintTextColor="#000000">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_correo_prof"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Correo"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:hintTextColor="#000000"/>
 
         <!-- Contraseña -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            app:boxBackgroundColor="#FFFFFF"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="#000000"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:endIconMode="password_toggle"
-            app:hintTextColor="#000000">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_contrasena_prof"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Texto de ayuda -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvAyudaCrudProfesor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="El profesor usará estas credenciales para gestionar cursos y revisar resultados."
+            android:text="Aquí solo se actualizan los datos almacenados del profesor en P-One."
             android:textSize="12sp"
             android:textColor="#777777"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="10dp" />
 
-        <!-- BOTONES (nuevo orden) -->
+        <!-- BOTONES EDITAR / CANCELAR -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -203,47 +172,33 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnVolverCrudProfesor"
+                android:id="@+id/btnCancelarProfesor"
                 android:layout_width="130dp"
                 android:layout_height="53dp"
                 android:layout_marginEnd="10dp"
-                android:text="Volver"
+                android:fontFamily="sans-serif-medium"
+                android:onClick="cancelarEdicion"
+                android:text="Cancelar"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-                app:backgroundTint="#FFA726"
-                app:rippleColor="#CC7A00"
-                app:cornerRadius="12dp" />
+                app:backgroundTint="#B0BEC5"
+                app:cornerRadius="12dp"
+                app:rippleColor="#78909C" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCrearProfesor"
+                android:id="@+id/btnEditarProfesor"
                 android:layout_width="130dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="10dp"
                 android:fontFamily="sans-serif-medium"
-                android:onClick="crearProfesor"
-                android:text="Crear profesor"
+                android:onClick="editarProfesor"
+                android:text="Guardar Cambios"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="#FFA726"
                 app:cornerRadius="12dp"
                 app:rippleColor="#CC7A00" />
         </LinearLayout>
-
-        <!-- VER LISTA ABAJO -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVerListaProfes"
-            android:layout_width="match_parent"
-            android:layout_height="53dp"
-            android:layout_marginTop="14dp"
-            android:fontFamily="sans-serif-medium"
-            android:onClick="curdprofe"
-            android:text="Ver lista profesores"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:backgroundTint="#29B6F6"
-            app:cornerRadius="12dp"
-            app:rippleColor="#0277BD" />
 
     </LinearLayout>
 

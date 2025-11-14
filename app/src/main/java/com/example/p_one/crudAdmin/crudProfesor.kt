@@ -1,5 +1,6 @@
 package com.example.p_one.crudAdmin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -8,9 +9,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.p_one.EditCrud.listcrudProfesor
 import com.example.p_one.Models.Curso
 import com.example.p_one.Models.Users
 import com.example.p_one.R
+import com.example.p_one.listPuntuacionProfe
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -157,6 +160,9 @@ class crudProfesor : AppCompatActivity() {
                 }
             }
     }
+    fun curdprofe(view: View){
+        startActivity(Intent(this, listcrudProfesor::class.java))
+    }
 
     private fun cargarCursos() {
         firebase.collection("Cursos")
@@ -256,4 +262,5 @@ class crudProfesor : AppCompatActivity() {
         b.setPositiveButton("Aceptar", null)
         b.create().show()
     }
+
 }

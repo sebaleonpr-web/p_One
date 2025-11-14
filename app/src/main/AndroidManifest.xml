@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.P_One">
         <activity
+            android:name=".EditCrud.listcrudProfesor"
+            android:exported="false" />
+        <activity
+            android:name=".EditCrud.crudRolesEdit"
+            android:exported="false" />
+        <activity
+            android:name=".EditCrud.crudProfesorEdit"
+            android:exported="false" />
+        <activity
+            android:name=".EditCrud.crudCursoEditar"
+            android:exported="false" />
+        <activity
             android:name=".EditCrud.listcrudAlumno"
             android:exported="false"
             android:screenOrientation="locked" />
