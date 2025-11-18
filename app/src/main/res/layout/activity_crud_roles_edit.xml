@@ -93,36 +93,51 @@
                 android:layout_height="wrap_content"
                 android:hint="Descripción"
                 android:minLines="2"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine|textCapSentences" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- CREADO POR -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCreadorLabel"
+        <!-- CREADO POR (misma tarjetita que en CREAR) -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Creado por:"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginTop="16dp" />
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="10dp"
+            android:background="#FFF3E0"
+            android:gravity="start">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCreadorNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cargando..."
-            android:textColor="#000000"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCreadorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Creado por"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="#7A7A7A"
+                android:textSize="12sp"
+                android:letterSpacing="0.05" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCreadorNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cargando..."
+                android:textColor="#FFA726"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
 
         <!-- PERMISO (menú) -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPermisoMenu"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Permiso (menú):"
+            android:text="Permiso (menú)"
+            android:textAllCaps="true"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="#7A7A7A"
+            android:textSize="12sp"
             android:layout_marginTop="16dp" />
 
         <Spinner
@@ -157,15 +172,13 @@
                 android:layout_width="130dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="10dp"
-                android:text="Guardar Cambios"
+                android:text="Guardar cambios"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="#FFA726"
                 app:cornerRadius="12dp"
                 app:rippleColor="#CC7A00" />
         </LinearLayout>
-
-        <!-- VER LISTA -->
 
         <ProgressBar
             android:id="@+id/progressRol"

@@ -75,17 +75,8 @@ class crudRolesEdit : AppCompatActivity() {
         txtDescripcionRol.setText(descripcionRol)
         tvCreadorNombre.text = textoCreador
 
-        val spinnerAdapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            permisosLista
-        )
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerPermisoMenu.adapter = spinnerAdapter
-
-        if (permisosLista.isNotEmpty()) {
-            spinnerPermisoMenu.setSelection(0)
-        }
+        // Cargar opciones del spinner con "Seleccione el permiso" como primera opción
+        cargarMenusEnSpinnerEdit()
 
         btnCancelarRol.setOnClickListener {
             finish()
@@ -93,6 +84,30 @@ class crudRolesEdit : AppCompatActivity() {
 
         btnEditarRol.setOnClickListener {
             guardarCambios()
+        }
+    }
+
+    // Igual que en crudRoles, pero usando la lista recibida para este rol
+    private fun cargarMenusEnSpinnerEdit() {
+
+        val opcionesFinales = mutableListOf("Seleccione el permiso")
+        opcionesFinales.addAll(permisosLista)
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            opcionesFinales
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPermisoMenu.adapter = adapter
+
+        // Seleccionar el permiso actual si existe
+        val permisoActual = if (permisosLista.isNotEmpty()) permisosLista[0] else ""
+        val idxActual = opcionesFinales.indexOf(permisoActual)
+        if (idxActual >= 0) {
+            spinnerPermisoMenu.setSelection(idxActual)
+        } else {
+            spinnerPermisoMenu.setSelection(0)
         }
     }
 
@@ -112,6 +127,11 @@ class crudRolesEdit : AppCompatActivity() {
         }
 
         val permisoSeleccionado = spinnerPermisoMenu.selectedItem?.toString() ?: ""
+
+        if (permisoSeleccionado == "Seleccione el permiso") {
+            mostrarAlerta("Aviso", "Debes seleccionar un permiso válido.")
+            return
+        }
 
         val datosActualizados = mutableMapOf<String, Any>(
             "nombreRol" to nombre,

@@ -32,4 +32,10 @@ class menuProfesor : AppCompatActivity() {
     fun curdPuntuacion(view: View){
         startActivity(Intent(this, listPuntuacionProfe::class.java))
     }
+    fun cerrarSesions(view: View) {
+        com.google.firebase.auth.FirebaseAuth.getInstance().signOut()
+        startActivity(Intent(this, Login::class.java))
+        finish()
+    }
+
 }

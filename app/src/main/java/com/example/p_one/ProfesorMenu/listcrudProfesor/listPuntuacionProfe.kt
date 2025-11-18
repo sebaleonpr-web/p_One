@@ -42,7 +42,6 @@ class listPuntuacionProfe : AppCompatActivity() {
         btnVolver = findViewById(R.id.btnVolver)
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
 
-        // HEADER USANDO item_ranking.xml
         val header = layoutInflater.inflate(R.layout.item_ranking, lvPuntuaciones, false)
         header.findViewById<TextView>(R.id.tvPosicion).text = "N°"
         header.findViewById<TextView>(R.id.tvApodo).text = "APODO"

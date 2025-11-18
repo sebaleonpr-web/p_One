@@ -41,7 +41,6 @@ class listAlumnos : AppCompatActivity() {
         btnVolver = findViewById(R.id.btnVolver)
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
 
-        // HEADER PERSONALIZADO (COD - NOMBRE - CURSO - LETRA)
         val header = layoutInflater.inflate(R.layout.header_list, lvListaAlumnos, false)
         lvListaAlumnos.addHeaderView(header)
 

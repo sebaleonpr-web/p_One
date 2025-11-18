@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.p_one.AdminMenu.ListCrudAdmin.listcrudRoles
+import com.example.p_one.Main.menuAdmin
 import com.example.p_one.Models.Rol
 import com.example.p_one.R
 import com.google.firebase.Timestamp
@@ -35,8 +36,16 @@ class crudRoles : AppCompatActivity() {
     private var nombreCreador: String = ""
 
     private fun capitalizar(texto: String): String {
-        return texto.trim().lowercase().replaceFirstChar { it.uppercase() }
+        if (texto.isBlank()) return ""
+
+        return texto.trim()
+            .lowercase()
+            .split(Regex("\\s+"))
+            .joinToString(" ") { palabra ->
+                palabra.replaceFirstChar { it.uppercase() }
+            }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,20 +110,28 @@ class crudRoles : AppCompatActivity() {
     }
 
     private fun cargarMenusEnSpinner() {
+
         val opcionesVisibles = listOf(
             "Menú alumnos",
             "Menú profesor",
             "Menú admin"
         )
 
+        val opcionesFinales = mutableListOf("Seleccione el permiso")
+        opcionesFinales.addAll(opcionesVisibles)
+
         val adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
-            opcionesVisibles
+            opcionesFinales
         )
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerPermisoMenu.adapter = adapter
+
+        spinnerPermisoMenu.setSelection(0)
     }
+
 
     fun crearRol(view: View) {
         val nombre = capitalizar(txtNombreRol.text.toString())
@@ -127,6 +144,11 @@ class crudRoles : AppCompatActivity() {
 
         if (uidCreador.isEmpty()) {
             mostrarAlerta("Error", "No se pudo identificar al creador del rol. Inicia sesión nuevamente.")
+            return
+        }
+
+        if (spinnerPermisoMenu.selectedItem == "Seleccione el permiso") {
+            mostrarAlerta("Error","Debes seleccionar un permiso válido.")
             return
         }
 
@@ -199,6 +221,9 @@ class crudRoles : AppCompatActivity() {
 
     fun curdlistroles(view: View){
         startActivity(Intent(this, listcrudRoles::class.java))
+    }
+    fun menuback(view: View){
+        startActivity(Intent(this, menuAdmin::class.java))
     }
 
     private fun limpiarForm() {

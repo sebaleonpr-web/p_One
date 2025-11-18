@@ -44,4 +44,10 @@ class menuAdmin : AppCompatActivity() {
     fun curdEdit(view: View){
         startActivity(Intent(this, crudEditRol::class.java))
     }
+    fun cerrarSesion(view: View) {
+        com.google.firebase.auth.FirebaseAuth.getInstance().signOut()
+        startActivity(Intent(this, Login::class.java))
+        finish()
+    }
+
 }

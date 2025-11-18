@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.p_one.Main.Bienvenidas.bienvenidaScreenAdmin
 import com.example.p_one.Main.Bienvenidas.bienvenidaScreenProfe
 import com.example.p_one.R
 import com.example.p_one.MenuAlumno.ScreenApodo
@@ -142,8 +143,11 @@ class Login : AppCompatActivity() {
                                             Handler(Looper.getMainLooper()).postDelayed({
                                                 when {
                                                     esAdmin -> {
-                                                        startActivity(Intent(this, menuAdmin::class.java))
+                                                        val intentAdmin = Intent(this, bienvenidaScreenAdmin::class.java)
+                                                        intentAdmin.putExtra("uidAuth", user.uid)
+                                                        startActivity(intentAdmin)
                                                     }
+
                                                     esProfe -> {
                                                         val intentProfe = Intent(this, bienvenidaScreenProfe::class.java)
                                                         intentProfe.putExtra("nombre", displayName)

@@ -2,6 +2,7 @@ package com.example.p_one.AdminMenu.ListCrudAdmin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -10,9 +11,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.p_one.AdminMenu.CrudAdmin.crudRoles
 import com.example.p_one.AdminMenu.EditCrudAdmin.crudRolesEdit
 import com.example.p_one.Models.Rol
 import com.example.p_one.R
+import com.example.p_one.listAlumnos
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.collections.get
 
@@ -22,7 +25,7 @@ class listcrudRoles : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
 
     private val listaRoles = mutableListOf<Rol>()
-    private lateinit var adapterRoles: ArrayAdapter<String>
+    private lateinit var adapterRoles: ArrayAdapter<Rol>
 
     private val mapaAdmins = mutableMapOf<String, String>()
 
@@ -47,11 +50,46 @@ class listcrudRoles : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         lvRoles = findViewById(R.id.lvRoles)
 
-        adapterRoles = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            mutableListOf()
-        )
+        // ADAPTADOR PERSONALIZADO USANDO item_rol.xml
+        adapterRoles = object : ArrayAdapter<Rol>(this, R.layout.item_rol, listaRoles) {
+
+            override fun getView(
+                position: Int,
+                convertView: android.view.View?,
+                parent: android.view.ViewGroup
+            ): android.view.View {
+
+                val view = convertView ?: layoutInflater.inflate(R.layout.item_rol, parent, false)
+                val rol = getItem(position)
+
+                val tvNombre = view.findViewById<android.widget.TextView>(R.id.tvFilaNombreRol)
+                val tvDescripcion = view.findViewById<android.widget.TextView>(R.id.tvFilaDescripcionRol)
+                val tvNivel = view.findViewById<android.widget.TextView>(R.id.tvFilaNivelRol)
+                val tvCreador = view.findViewById<android.widget.TextView>(R.id.tvFilaCreadorRol)
+
+                if (rol != null) {
+
+                    // Nombre
+                    tvNombre.text = rol.nombreRol ?: "Sin nombre"
+
+                    // Descripción
+                    tvDescripcion.text = rol.descripcionRol ?: "Sin descripción"
+
+                    // Nivel
+                    tvNivel.text = rol.nivelAcceso?.toString() ?: "-"
+
+                    // Creado por
+                    val creadorId = rol.creadoPor
+                    tvCreador.text = when {
+                        creadorId.isNullOrEmpty() -> "Desconocido"
+                        mapaAdmins.containsKey(creadorId) -> mapaAdmins[creadorId]
+                        else -> creadorId
+                    }
+                }
+
+                return view
+            }
+        }
 
         lvRoles.adapter = adapterRoles
 
@@ -102,32 +140,6 @@ class listcrudRoles : AppCompatActivity() {
                         }
 
                         listaRoles.add(rol)
-
-                        val texto = buildString {
-                            val nombreRol = rol.nombreRol ?: ""
-                            val descripcion = rol.descripcionRol ?: ""
-                            val nivel = rol.nivelAcceso
-                            val creadorId = rol.creadoPor
-
-                            append(nombreRol.ifEmpty { "Rol sin nombre" })
-
-                            if (descripcion.isNotEmpty()) {
-                                append("\n")
-                                append(descripcion)
-                            }
-
-                            if (nivel != null) {
-                                append("\nNivel de acceso: ")
-                                append(nivel)
-                            }
-
-                            if (!creadorId.isNullOrEmpty()) {
-                                append("\nCreado por: ")
-                                append(mapaAdmins[creadorId] ?: creadorId)
-                            }
-                        }
-
-                        adapterRoles.add(texto)
                     }
                 }
 
@@ -137,6 +149,7 @@ class listcrudRoles : AppCompatActivity() {
                 mostrarAlerta("Error", "Error al cargar roles: ${e.message}")
             }
     }
+
 
     private fun configurarEventosLista() {
         lvRoles.onItemLongClickListener =
@@ -161,7 +174,6 @@ class listcrudRoles : AppCompatActivity() {
     }
 
     private fun irAEditarRol(rol: Rol) {
-        // Bloquear edición si es uno de los roles protegidos
         if (esRolProtegido(rol)) {
             mostrarAlerta("Aviso", "No puedes editar este rol.")
             return
@@ -220,8 +232,8 @@ class listcrudRoles : AppCompatActivity() {
             .addOnSuccessListener {
                 mostrarAlerta("Éxito", "Rol eliminado.")
 
-                val textoItem = adapterRoles.getItem(position)
-                if (textoItem != null) adapterRoles.remove(textoItem)
+                val item = adapterRoles.getItem(position)
+                if (item != null) adapterRoles.remove(item)
 
                 listaRoles.removeAt(position)
                 adapterRoles.notifyDataSetChanged()
@@ -231,6 +243,9 @@ class listcrudRoles : AppCompatActivity() {
             }
     }
 
+    fun volvercurd(view: View){
+        startActivity(Intent(this, crudRoles::class.java))
+    }
     private fun mostrarAlerta(titulo: String, mensaje: String) {
         AlertDialog.Builder(this)
             .setTitle(titulo)

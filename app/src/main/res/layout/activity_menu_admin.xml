@@ -138,5 +138,20 @@
             app:cornerRadius="12dp"
             app:rippleColor="#CC7A00" />
 
+        <!-- BOTÓN CERRAR SESIÓN -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:onClick="cerrarSesion"
+            android:text="Cerrar sesión"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:backgroundTint="#D84315"
+            app:cornerRadius="12dp"
+            app:rippleColor="#992300" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
