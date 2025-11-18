@@ -1,75 +1,82 @@
-P-One – Plataforma educativa para estudiantes de educación básica
-P-One es una aplicación pensada para ayudar a niños y niñas de educación básica a reforzar matemáticas de forma clara, entretenida y guiada.
-El sistema reúne actividades, seguimiento, ranking, cursos, profesores y administración en un solo lugar, manteniendo todo ordenado y fácil de usar.
-Objetivo de la aplicación
-Entregar una herramienta educativa donde los estudiantes practiquen matemáticas y puedan ver su progreso, mientras que profesores y administradores gestionan usuarios, cursos y resultados sin complicaciones.
-Roles dentro de la app
-Alumno
-Inicia sesión con su cuenta.
-Ve un menú diseñado especialmente para él.
-Realiza ejercicios del módulo MathQuiz (sumas, restas, multiplicaciones y divisiones).
-Responde mediante alternativas.
-Obtiene un resumen al finalizar: correctas, incorrectas y porcentaje general.
-Sus resultados se guardan automáticamente en Firestore.
-Puede ver un ranking donde compara su rendimiento con otros compañeros del curso.
-Profesor
-Puede visualizar la lista de alumnos.
-Gestiona los cursos que tiene asignados.
-Revisa los resultados de cada estudiante.
-Accede a un menú con más funciones de organización.
-Administrador
-Administra toda la estructura del sistema.
-Puede crear, editar y eliminar usuarios.
-Gestiona roles, profesores y cursos.
-Mantiene ordenados los datos de la plataforma.
-MathQuiz
-El módulo MathQuiz es el corazón de la app. Está diseñado para estudiantes de educación básica:
-Generación aleatoria de operaciones.
-Cuatro alternativas de respuesta.
-Retroalimentación inmediata.
-Pantalla de resultados al terminar.
-Registro automático en la base de datos.
-Ranking que muestra el desempeño general de los alumnos.
-Estructura de base de datos
-Toda la información se guarda en Firebase Firestore usando una estructura clara:
+# P-One
+
+P-One es una aplicación educativa para estudiantes de educación básica. Su objetivo principal es reforzar las matemáticas mediante ejercicios simples, retroalimentación inmediata y un sistema de progreso accesible tanto para alumnos como para profesores y administradores.
+
+---
+
+## Descripción general
+
+La app permite que los estudiantes practiquen operaciones matemáticas básicas a través del módulo MathQuiz.  
+Los profesores pueden revisar resultados y administrar cursos, mientras que los administradores gestionan usuarios, roles y la estructura completa del sistema.
+
+---
+
+## Características
+
+- Módulo MathQuiz con sumas, restas, multiplicaciones y divisiones.  
+- Resultados guardados automáticamente en Firebase.  
+- Ranking de desempeño por curso.  
+- Inicio de sesión y registro con validaciones.  
+- Menús diferenciados para Alumno, Profesor y Administrador.  
+- CRUD completo para gestión de usuarios, cursos y roles.  
+- Recuperación de contraseña y verificación de cuenta.  
+- Interfaz clara y amigable para estudiantes.
+
+---
+
+## Tecnologías utilizadas
+
+- Kotlin (Android)  
+- Firebase Authentication  
+- Firebase Firestore  
+- Material Design  
+- Android Studio  
+
+---
+
+## Estructura del proyecto
+
+- `models/` – Data classes para usuarios, cursos, roles y resultados  
+- `layouts/` – Pantallas XML  
+- `activities/` – Lógica principal de la app  
+- `firebase/` – Conexiones con Firestore y Auth  
+
+---
+
+## Base de datos
+
 Colecciones principales:
-users
-cursos
-roles
-mathQuizResultados
-contadores y puntuaciones de apoyo
-El documento de cada usuario utiliza campos como:
-uidAuth
-rol
-nombre
-apellido
-correo
-apodoAlumno
-idCurso
-cursosAsignados
-nivelAcceso
-emailVerificado
-createdAt y updatedAt
-La estructura está diseñada para ser rápida, ordenada y fácil de escalar.
-Características principales
-Inicio de sesión y registro.
-Recuperación de contraseña.
-Validaciones seguras.
-Menús diferenciados según rol (Alumno, Profesor, Administrador).
-Diseño claro y amigable para niños.
-Módulo MathQuiz con resultados y retroalimentación.
-Ranking general de alumnos.
-CRUD completo para administradores.
-Gestión de cursos y profesores.
-Firebase Auth para usuarios.
-Firestore para datos principales.
-Diseño con Material Design 3.
-Tecnologías utilizadas
-Kotlin (Android)
-Android Studio
-Firebase Authentication
-Firebase Firestore
-Material Design
-ConstraintLayout y ScrollView para la estructura visual
-Valor del proyecto
-P-One busca que aprender matemáticas sea más accesible y motivante para los estudiantes, mientras profesores y administradores cuentan con un sistema centralizado que facilita su trabajo diario. Es una plataforma que combina educación y tecnología en un formato simple, ordenado y funcional.
+
+- `users`  
+- `cursos`  
+- `roles`  
+- `mathQuizResultados`  
+- `puntuaciones`  
+
+---
+
+## Roles del sistema
+
+**Alumno:** realiza ejercicios, recibe resultados y revisa su ranking.  
+**Profesor:** administra cursos y supervisa el avance de los alumnos.  
+**Administrador:** gestiona usuarios, roles y estructura general del sistema.
+
+---
+
+## Instalación
+
+### Opción 1: Ejecutar el proyecto desde Android Studio
+1. Clonar este repositorio.  
+2. Abrir el proyecto en Android Studio.  
+3. Agregar el archivo `google-services.json` de Firebase en `app/`.  
+4. Ejecutar en un dispositivo físico o emulador.
+
+### Opción 2: Instalar el APK
+Puedes descargar el archivo APK compilado y ejecutarlo directamente en tu dispositivo Android.  
+Solo instala el archivo y podrás usar la aplicación sin necesidad de Android Studio.
+
+---
+
+## Autor
+
+Desarrollado por Seba.
