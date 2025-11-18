@@ -2,15 +2,21 @@ package com.example.p_one.AdminMenu.ListCrudAdmin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.p_one.AdminMenu.CrudAdmin.crudEditRol
+import com.example.p_one.AdminMenu.CrudAdmin.crudProfesor
 import com.example.p_one.AdminMenu.EditCrudAdmin.crudProfesorEdit
+import com.example.p_one.Main.menuAdmin
 import com.example.p_one.Models.Users
 import com.example.p_one.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,7 +32,7 @@ class listcrudProfesor : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
 
     private val listaProfesores = mutableListOf<Users>()
-    private lateinit var adapterProfesores: ArrayAdapter<String>
+    private lateinit var adapterProfesores: ProfesoresAdapter
 
     private val mapaCursos = mutableMapOf<String, String>()
 
@@ -50,12 +56,7 @@ class listcrudProfesor : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         lvProfesores = findViewById(R.id.lvProfesores)
 
-        adapterProfesores = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            mutableListOf()
-        )
-
+        adapterProfesores = ProfesoresAdapter(this, listaProfesores, mapaCursos)
         lvProfesores.adapter = adapterProfesores
 
         cargarMapaCursos {
@@ -93,7 +94,6 @@ class listcrudProfesor : AppCompatActivity() {
 
     private fun cargarProfesores() {
         listaProfesores.clear()
-        adapterProfesores.clear()
 
         db.collection("users")
             .whereEqualTo("rol", "Profesor")
@@ -107,25 +107,6 @@ class listcrudProfesor : AppCompatActivity() {
 
                         profesor.uidAuth = doc.id
                         listaProfesores.add(profesor)
-
-                        val texto = buildString {
-                            append(profesor.nombre ?: "")
-                            append(" ")
-                            append(profesor.apellido ?: "")
-
-                            val cursosIds = profesor.cursosAsignados
-                            if (!cursosIds.isNullOrEmpty()) {
-                                append("\nCursos: ")
-
-                                val nombres = cursosIds.map { id ->
-                                    mapaCursos[id] ?: id
-                                }
-
-                                append(nombres.joinToString(", "))
-                            }
-                        }
-
-                        adapterProfesores.add(texto)
                     }
                 }
 
@@ -188,9 +169,6 @@ class listcrudProfesor : AppCompatActivity() {
         eliminarUsuarioCompletoBackend(id) { ok, mensaje ->
             runOnUiThread {
                 if (ok) {
-                    val textoItem = adapterProfesores.getItem(position)
-                    if (textoItem != null) adapterProfesores.remove(textoItem)
-
                     listaProfesores.removeAt(position)
                     adapterProfesores.notifyDataSetChanged()
 
@@ -236,5 +214,44 @@ class listcrudProfesor : AppCompatActivity() {
             .setPositiveButton("Aceptar", null)
             .create()
             .show()
+    }
+    fun back(view: View){
+        startActivity(Intent(this, crudProfesor::class.java))
+    }
+    private class ProfesoresAdapter(
+        activity: listcrudProfesor,
+        private val profesores: MutableList<Users>,
+        private val mapaCursos: Map<String, String>
+    ) : ArrayAdapter<Users>(activity, 0, profesores) {
+
+        private val inflater = activity.layoutInflater
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = convertView ?: inflater.inflate(R.layout.item_profesores, parent, false)
+
+            val profesor = profesores[position]
+
+            val tvNombre = view.findViewById<TextView>(R.id.tvFilaNombreProfesor)
+            val tvCorreo = view.findViewById<TextView>(R.id.tvFilaCorreoProfesor)
+            val tvCursos = view.findViewById<TextView>(R.id.tvFilaCursosProfesor)
+
+            val nombre = profesor.nombre ?: ""
+            val apellido = profesor.apellido ?: ""
+            tvNombre.text = "$nombre $apellido".trim()
+
+            tvCorreo.text = profesor.correo ?: ""
+
+            val cursosIds = profesor.cursosAsignados ?: emptyList()
+            if (cursosIds.isNotEmpty()) {
+                val nombresCursos = cursosIds.map { id ->
+                    mapaCursos[id] ?: id
+                }
+                tvCursos.text = nombresCursos.joinToString(", ")
+            } else {
+                tvCursos.text = "Sin cursos"
+            }
+
+            return view
+        }
     }
 }

@@ -200,6 +200,7 @@ class crudProfesorEdit : AppCompatActivity() {
             datos["updatedAt"] = System.currentTimeMillis()
         }
 
+
         if (datos.isEmpty() && contrasenaNueva.isEmpty()) {
             mostrarAlerta("Aviso", "No hay cambios para guardar.")
             return

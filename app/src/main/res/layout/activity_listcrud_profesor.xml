@@ -51,7 +51,31 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#FFE0B2"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="10dp" />
+
+        <!-- CABECERA TIPO TABLA (usa el item_profesores como contenido) -->
+        <LinearLayout
+            android:id="@+id/header_row_profesor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:background="#1AFFA726">
+
+            <include
+                android:id="@+id/headerProfesores"
+                layout="@layout/item_profesores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- DIVISOR CABECERA / LISTA -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFE0B2"
+            android:layout_marginBottom="6dp" />
 
         <!-- LISTVIEW PROFESORES -->
         <ListView
@@ -59,8 +83,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:divider="#BDBDBD"
-            android:dividerHeight="1dp" />
+            android:divider="#FFE0B2"
+            android:dividerHeight="1dp"
+            android:padding="6dp"
+            android:background="#FFFDF7" />
 
         <!-- BOTÓN VOLVER -->
         <com.google.android.material.button.MaterialButton
@@ -68,12 +94,13 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="12dp"
+            android:onClick="back"
             android:text="Volver"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             app:backgroundTint="#FFA726"
-            app:rippleColor="#CC7A00"
-            app:cornerRadius="12dp" />
+            app:cornerRadius="12dp"
+            app:rippleColor="#CC7A00" />
 
     </LinearLayout>
 

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.p_one.AdminMenu.ListCrudAdmin.listcrudProfesor
+import com.example.p_one.Main.menuAdmin
 import com.example.p_one.Models.Curso
 import com.example.p_one.Models.Users
 import com.example.p_one.R
@@ -89,6 +90,10 @@ class crudProfesor : AppCompatActivity() {
             mostrarAlerta("Error", "Selecciona al menos un curso para el profesor.")
             return
         }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+            mostrarAlerta("Error", "Ingresa un correo con formato válido.")
+            return
+        }
 
         if (documentoId != null) {
             mostrarAlerta("Aviso", "Estás en modo edición. Usa Editar profesor.")
@@ -162,6 +167,9 @@ class crudProfesor : AppCompatActivity() {
 
     fun curdprofe(view: View) {
         startActivity(Intent(this, listcrudProfesor::class.java))
+    }
+    fun backs(view: View) {
+        startActivity(Intent(this, menuAdmin::class.java))
     }
 
     private fun cargarCursos() {

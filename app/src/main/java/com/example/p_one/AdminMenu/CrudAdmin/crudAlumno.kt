@@ -84,7 +84,6 @@ class crudAlumno : AppCompatActivity() {
         val contrasena = txt_contrasena.text.toString().trim()
         val idx = spCursos.selectedItemPosition
 
-        // idx <= 0 => "Seleccione un curso" o nada seleccionado
         if (name.isEmpty() || apellido.isEmpty() || apodo.isEmpty() || edadTxt.isEmpty()
             || correo.isEmpty() || contrasena.isEmpty() || idx <= 0
         ) {

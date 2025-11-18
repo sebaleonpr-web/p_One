@@ -18,7 +18,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Main.Bienvenidas.bienvenidaScreenAdmin"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".AdminMenu.ListCrudAdmin.listcrudRoles"
             android:exported="false"

@@ -168,7 +168,6 @@ class crudAlumnoEditar : AppCompatActivity() {
         val edadNueva = txtEdadAlumno.text.toString().toIntOrNull() ?: 0
         val contrasenaNueva = txtContrasenaAlumno.text?.toString()?.trim().orEmpty()
 
-        // VALIDACIÓN DE RANGO DE EDAD (1 a 18)
         if (edadNueva != 0) {
             if (edadNueva < 1 || edadNueva > 18) {
                 mostrarAlerta("Error", "La edad debe estar entre 1 y 18 años.")

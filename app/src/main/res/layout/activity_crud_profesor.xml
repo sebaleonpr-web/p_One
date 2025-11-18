@@ -9,242 +9,266 @@
     tools:context=".AdminMenu.CrudAdmin.crudProfesor"
     android:background="@drawable/backgroundventanas">
 
-    <LinearLayout
-        android:id="@+id/main_container_prof"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:gravity="center_horizontal"
-        android:background="#CCFFFFFF"
-        android:elevation="4dp"
+    <ScrollView
+        android:id="@+id/scroll_container_crud_profesor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- TÍTULO -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTituloCrudProfesor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Registrar profesor"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:gravity="center"
-            android:layout_marginBottom="6dp" />
-
-        <!-- SUBTÍTULO -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvSubtituloCrudProfesor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Asigna cursos y credenciales para que el profesor use P-One y el MathQuiz."
-            android:textSize="14sp"
-            android:textColor="#555555"
-            android:gravity="center"
-            android:layout_marginBottom="16dp" />
-
-        <!-- DIVISOR -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#FFE0B2"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Nombre -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:boxBackgroundColor="#FFFFFF"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="#000000"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:hintTextColor="#000000">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_nombre_prof"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombre"
-                android:inputType="textPersonName" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Apellido -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:boxBackgroundColor="#FFFFFF"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="#000000"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:hintTextColor="#000000">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_apellido_prof"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Apellido"
-                android:inputType="textPersonName" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Cursos asignados (multi selección) -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_curso_prof_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cursos asignados"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSeleccionarCursosProf"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Seleccionar cursos"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium"
-            app:backgroundTint="#FFA726"
-            app:rippleColor="#CC7A00"
-            app:cornerRadius="12dp" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCursosSeleccionadosProf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sin cursos seleccionados"
-            android:textColor="#000000"
-            android:textSize="13sp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="10dp" />
-
-        <!-- Correo -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:boxBackgroundColor="#FFFFFF"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="#000000"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:hintTextColor="#000000">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_correo_prof"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Correo"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Contraseña -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            app:boxBackgroundColor="#FFFFFF"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="#000000"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:endIconMode="password_toggle"
-            app:hintTextColor="#000000">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_contrasena_prof"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Texto de ayuda -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvAyudaCrudProfesor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="El profesor usará estas credenciales para gestionar cursos y revisar resultados."
-            android:textSize="12sp"
-            android:textColor="#777777"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="10dp" />
-
-        <!-- BOTONES (nuevo orden) -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:padding="12dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnVolverCrudProfesor"
-                android:layout_width="130dp"
-                android:layout_height="53dp"
-                android:layout_marginEnd="10dp"
-                android:text="Volver"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-                app:backgroundTint="#FFA726"
-                app:rippleColor="#CC7A00"
-                app:cornerRadius="12dp" />
+            <!-- CUADRO GENERAL -->
+            <LinearLayout
+                android:id="@+id/main_container_prof"
+                android:layout_width="379dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                android:elevation="4dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="14dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCrearProfesor"
-                android:layout_width="130dp"
-                android:layout_height="53dp"
-                android:layout_marginStart="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:onClick="crearProfesor"
-                android:text="Crear profesor"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                app:backgroundTint="#FFA726"
-                app:cornerRadius="12dp"
-                app:rippleColor="#CC7A00" />
+                <!-- TÍTULO -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTituloCrudProfesor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="Registrar profesor"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- SUBTÍTULO -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvSubtituloCrudProfesor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="Asigna cursos y credenciales para que el profesor use P-One y el MathQuiz."
+                    android:textColor="#555555"
+                    android:textSize="13sp" />
+
+                <!-- DIVISOR -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#FFE0B2" />
+
+                <!-- Nombre -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="#000000"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#000000">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_nombre_prof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre"
+                        android:inputType="textCapWords"  />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Apellido -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="#000000"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#000000">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_apellido_prof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Apellido"
+                        android:inputType="textCapWords"  />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Cursos asignados (multi selección) -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_curso_prof_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="Cursos asignados"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSeleccionarCursosProf"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Seleccionar cursos"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:backgroundTint="#FFA726"
+                    app:cornerRadius="12dp"
+                    app:rippleColor="#CC7A00" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvCursosSeleccionadosProf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Sin cursos seleccionados"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+
+                <!-- Correo -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="#000000"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#000000">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_correo_prof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Correo"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Contraseña -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="#000000"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:endIconMode="password_toggle"
+                    app:hintTextColor="#000000">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_contrasena_prof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Contraseña"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Texto de ayuda -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvAyudaCrudProfesor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="El profesor usará estas credenciales para gestionar cursos y revisar resultados."
+                    android:textColor="#777777"
+                    android:textSize="11sp" />
+
+                <!-- BOTONES -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnVolverCrudProfesor"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:onClick="backs"
+                        android:text="Volver"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="#FFA726"
+                        app:cornerRadius="12dp"
+                        app:rippleColor="#CC7A00" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCrearProfesor"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:onClick="crearProfesor"
+                        android:text="Crear profesor"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="#FFA726"
+                        app:cornerRadius="12dp"
+                        app:rippleColor="#CC7A00" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerListaProfes"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:onClick="curdprofe"
+                    android:text="Ver lista profesores"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#546E7A"
+                    app:cornerRadius="12dp"
+                    app:rippleColor="#37474F"
+                    app:strokeColor="#FFFFFF"
+                    app:strokeWidth="2dp" />
+
+            </LinearLayout>
+
         </LinearLayout>
-
-        <!-- VER LISTA ABAJO -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVerListaProfes"
-            android:layout_width="match_parent"
-            android:layout_height="53dp"
-            android:layout_marginTop="14dp"
-            android:fontFamily="sans-serif-medium"
-            android:onClick="curdprofe"
-            android:text="Ver lista profesores"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:backgroundTint="#29B6F6"
-            app:cornerRadius="12dp"
-            app:rippleColor="#0277BD" />
-
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
