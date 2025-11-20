@@ -15,7 +15,7 @@ Los profesores pueden revisar resultados y administrar cursos, mientras que los 
 
 - Módulo MathQuiz con sumas, restas, multiplicaciones y divisiones.  
 - Resultados guardados automáticamente en Firebase.  
-- Ranking de desempeño por curso.  
+- Ranking de desempeño.  
 - Inicio de sesión y registro con validaciones.  
 - Menús diferenciados para Alumno, Profesor y Administrador.  
 - CRUD completo para gestión de usuarios, cursos y roles.  
@@ -32,6 +32,7 @@ Los profesores pueden revisar resultados y administrar cursos, mientras que los 
 - Material Design  
 - Android Studio
 - Render
+- Js(Backend)
 
 ---
 
